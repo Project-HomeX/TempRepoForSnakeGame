@@ -1,5 +1,9 @@
 import processing.core.PApplet;
 
+/**
+ * The Player class that is a 20x20 snake
+ *
+ */
 public class Snake {
 	float x = 10;
 	float y = 10; 

@@ -1,6 +1,10 @@
 import processing.core.PApplet;
-import processing.event.KeyEvent;
 
+/**
+ * Main class. Runs the game
+ * Uses PApplet
+ *
+ */
 public class Main extends PApplet {
 	Snake s;
 	Food f;

@@ -1,5 +1,9 @@
 import processing.core.PApplet;
 
+/**
+ * Food class that has a scale of 20
+ *
+ */
 public class Food {
 	float x;
 	float y;
