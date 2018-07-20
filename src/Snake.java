@@ -7,7 +7,7 @@ import processing.core.PApplet;
 public class Snake {
 	float x = 10;
 	float y = 10; 
-	float xspeed = 5;
+	float xspeed = 20;
 	float yspeed = 0;
 	float scl = 20;
 	PApplet parrent;

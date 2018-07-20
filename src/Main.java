@@ -9,6 +9,11 @@ public class Main extends PApplet {
 	Snake s;
 	Food f;
 	float scl = 20;
+	int speed = 5;
+	// keeping track of which direction the snake is going
+	// it starts going to the right
+	//[up,down,right,left]
+	boolean[] direc = {false,false,true,false};
 	public static void main(String[] args) {
 		PApplet.main("Main");
 	}
@@ -22,11 +27,11 @@ public class Main extends PApplet {
 		background(0);
 		s = new Snake(this,scl);
 		f = new Food(this,10,scl);
-		frameRate(10);
+		frameRate(speed);
 	}
 
 	public void draw() {
-		background(51);
+		background(0);
 		s.update();
 		s.show();
 		f.show();
@@ -48,16 +53,39 @@ public class Main extends PApplet {
 	public void keyPressed() {
 		if (key == CODED) {
 			if (keyCode == UP) {
-				s.dir(0,-5);
+				up();
 			} else if (keyCode == DOWN) {
-				s.dir(0,5);
+				down();
 			}else if (keyCode == RIGHT) {
-				s.dir(5,0);
+				right();
 			}
 			else if (keyCode == LEFT) {
-				s.dir(-5,0);
+				left();
 			} 
 		}
+
+	}
+	private void up() {
+		s.dir(0,-20);
+		boolean[] temp = {true,false,false,false};
+		direc = temp;
+	}
+	private void down() {
+		s.dir(0,20);
+		boolean[] temp = {false,true,false,false};
+		direc = temp;
+
+	}
+	private void right() {
+		s.dir(20,0);
+		boolean[] temp = {false,false,true,false};
+		direc = temp;
+
+	}
+	private void left() {
+		s.dir(-20,0);
+		boolean[] temp = {false,false,false,true};
+		direc = temp;
 
 	}
 }
