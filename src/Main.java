@@ -52,14 +52,14 @@ public class Main extends PApplet {
 	@Override 
 	public void keyPressed() {
 		if (key == CODED) {
-			if (keyCode == UP) {
+			if (keyCode == UP && !direc[1]) {
 				up();
-			} else if (keyCode == DOWN) {
+			} else if (keyCode == DOWN && !direc[0]) {
 				down();
-			}else if (keyCode == RIGHT) {
+			}else if (keyCode == RIGHT && !direc[3]) {
 				right();
 			}
-			else if (keyCode == LEFT) {
+			else if (keyCode == LEFT && !direc[2]){
 				left();
 			} 
 		}
