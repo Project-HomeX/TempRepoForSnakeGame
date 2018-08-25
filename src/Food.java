@@ -3,7 +3,6 @@ import processing.core.PApplet;
 public class Food {
 	float x;
 	float y;
-	float scl = 20;
 	PApplet p;
 	public Food(PApplet p, float x, float y) {
 		// TODO Auto-generated constructor stub
@@ -23,11 +22,8 @@ public class Food {
 	public float getY(){
 		return y;
 	}
-	public void show(){
+	public void show(float x,float y){
 		p.fill(255);
-		p.rect(x, y, scl, scl);
-	}
-	public void clear(){
-		
+		p.rect(x, y, 20, 20);
 	}
 }

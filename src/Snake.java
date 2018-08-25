@@ -1,22 +1,29 @@
 import processing.core.PApplet;
-
+/**
+ * Snake class 
+ * @author Gutama Abadig
+ *
+ */
 public class Snake {
-	float x = 10;
-	float y = 10; 
-	float xspeed = 5;
+	float x = 0;
+	float y = 0; 
+	float xspeed = 10;
 	float yspeed = 0;
-	float scl = 20;
 	PApplet parrent;
-	public Snake(PApplet p, float scl) {
+	public Snake(PApplet p) {
 		// TODO Auto-generated constructor stub
-		this.scl = scl;
+		this.x = 0;
+		this.y = 0;
+		this.xspeed = 10;
+		this.yspeed = 0;
 		parrent = p;
-		this.x = p.width/2;
-		this.y = p.height/2;
 	}
+	/**
+	 * update the snakes location.
+	 */
 	public void update(){
-		x = x+ xspeed;
-		y = y+yspeed;
+		this.x = x+ xspeed;
+		this.y = y+yspeed;
 	}
 	public float getX(){
 		return x;
@@ -24,12 +31,16 @@ public class Snake {
 	public float getY(){
 		return y;
 	}
+	/**
+	 show the updated snake at its now location. 
+	 */
 	public void show(){
-		parrent.fill(255);
-		parrent.rect(x,y,scl,scl);
+		parrent.fill(204, 102, 0);
+		parrent.rect(x,y,20,20);
 	}
-	public void dir(int x, int y){
-		xspeed = x;
-		yspeed = y;
+	public void dir(float x, float y){
+		//if((x<0 && xspeed>0) || (y<0 && yspeed > 0))
+			xspeed = x*20;
+			yspeed = y*20;
 	}
 }
