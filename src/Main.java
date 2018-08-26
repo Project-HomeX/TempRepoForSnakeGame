@@ -8,8 +8,8 @@ import processing.core.PApplet;
 public class Main extends PApplet {
 	Snake snake;
 	Food food;
-	float fx = floor(random(600/20))*20;
-	float fy = floor(random(600/20))*20;
+/*	float fx = floor(random(600/20))*20;
+	float fy = floor(random(600/20))*20;*/
 	boolean flagU;
 	boolean flagD;
 	boolean flagR;
@@ -25,7 +25,7 @@ public class Main extends PApplet {
 	public void setup() {	
 		frameRate(10);
 		snake = new Snake(this);
-		food = new Food(this,20,20);		
+		food = new Food(this);		
 	}
 	//this is a loop method... it loads every U second (I don't know the exact second so a called it U). 
 	public void draw() {
@@ -39,20 +39,20 @@ public class Main extends PApplet {
 			line(i,0,i,600);
 		}
 		//this is a built in collision ditection in Processing. So don't worry about it.
-		coll(fx,fy);
-		food.show(fx, fy);
-		snake.update();
+		food.show();
 		snake.show();
+		snake.update();
+		coll();
 	}
-	public void coll(float fx, float fy){
-		float r = dist(fx,fy,snake.getX(),snake.getY());
-		if(r<1){
-			this.fx = floor(random(600/20))*20;
-			this.fy = floor(random(600/200))*20;
+	public void coll(){
+		float r = dist(food.getX(),food.getY(),snake.getX(),snake.getY());
+		if(r<5){
+			food.update();
 		}
 	}
 	/**
 	 * flagU,flagR... stuff is to prevent opposite direction movement. 
+	 * some one else has written this one better
 	 */
 	@Override 
 	public void keyPressed() {

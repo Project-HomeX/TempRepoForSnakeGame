@@ -4,17 +4,10 @@ public class Food {
 	float x;
 	float y;
 	PApplet p;
-	public Food(PApplet p, float x, float y) {
+	public Food(PApplet p) {
 		// TODO Auto-generated constructor stub
-		this.x = x;
-		this.y = y;
 		this.p = p;
-	}
-	public void setX(float x){
-		this.x = x;
-	}
-	public void setY(float y){
-		this.y = y;
+		update();
 	}
 	public float getX(){
 		return x;
@@ -22,8 +15,13 @@ public class Food {
 	public float getY(){
 		return y;
 	}
-	public void show(float x,float y){
+	public void show(){
 		p.fill(255);
 		p.rect(x, y, 20, 20);
 	}
+	public void update(){
+		this.x = p.floor(p.random(600/20))*20;
+		this.y =p.floor(p.random(600/20))*20;
+	}
+	
 }

@@ -14,7 +14,7 @@ public class Snake {
 		// TODO Auto-generated constructor stub
 		this.x = 0;
 		this.y = 0;
-		this.xspeed = 10;
+		this.xspeed = 20;
 		this.yspeed = 0;
 		parrent = p;
 	}
@@ -23,7 +23,7 @@ public class Snake {
 	 */
 	public void update(){
 		this.x = x+ xspeed;
-		this.y = y+yspeed;
+		this.y = y+yspeed;	
 	}
 	public float getX(){
 		return x;
