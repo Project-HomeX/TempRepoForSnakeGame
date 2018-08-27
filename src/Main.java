@@ -1,19 +1,25 @@
 import processing.core.PApplet;
 /**
  * Main class where the game starts running.
- * 
- * @author GUTIBSITU
  *
  */
 public class Main extends PApplet {
 	Snake snake;
 	Food food;
-/*	float fx = floor(random(600/20))*20;
-	float fy = floor(random(600/20))*20;*/
 	boolean flagU;
 	boolean flagD;
-	boolean flagR;
+	boolean flagR = true;
 	boolean flagL;
+	//
+	float scl = 20;
+	int speed = 5;
+	//I'm unable to use this. (gutama)
+	/*
+	// keeping track of which direction the snake is going
+	// it starts going to the right
+	//[up,down,right,left]
+	boolean[] direc = {false,false,true,false};
+	*/
 	public static void main(String[] args) {
 		PApplet.main("Main");
 	}
@@ -23,7 +29,7 @@ public class Main extends PApplet {
 	}
 	//Where the game starts loading
 	public void setup() {	
-		frameRate(10);
+		frameRate(speed);
 		snake = new Snake(this);
 		food = new Food(this);		
 	}
@@ -32,19 +38,22 @@ public class Main extends PApplet {
 		background(0);
 		fill(255);
 		stroke(126);
-		for (int i = 0; i < 600; i+=10) {
+		//un comment this to see a grid.
+		/*
+		for (int i = 0; i < 600; i+=20) {
 			line(0,i,600,i);
 		}
-		for (int i = 0; i < 600; i+=10) {
+		for (int i = 0; i < 600; i+=20) {
 			line(i,0,i,600);
 		}
-		//this is a built in collision ditection in Processing. So don't worry about it.
+		*/
 		food.show();
 		snake.show();
 		snake.update();
-		coll();
+		//this is a built in collision ditection in Processing. So don't worry about it.
+		collision();
 	}
-	public void coll(){
+	public void collision(){
 		float r = dist(food.getX(),food.getY(),snake.getX(),snake.getY());
 		if(r<5){
 			food.update();
@@ -53,7 +62,8 @@ public class Main extends PApplet {
 	/**
 	 * flagU,flagR... stuff is to prevent opposite direction movement. 
 	 * some one else has written this one better
-	 */
+	 *
+	 **/
 	@Override 
 	public void keyPressed() {
 		if (key == CODED) {
@@ -81,4 +91,46 @@ public class Main extends PApplet {
 			}
 		}
 	}
+	
+	//while this is much more beautiful it does not work properly for me. (gutama)
+	/*
+	@Override 
+	public void keyPressed() {
+		if (key == CODED) {
+			if (keyCode == UP && !direc[1]) {
+				up();
+			} else if (keyCode == DOWN && !direc[0]) {
+				down();
+			}else if (keyCode == RIGHT && !direc[3]) {
+				right();
+			}
+			else if (keyCode == LEFT && !direc[2]){
+				left();
+			} 
+		}
+
+	}
+	private void up() {
+		snake.dir(0,-20);
+		boolean[] temp = {true,false,false,false};
+		direc = temp;
+	}
+	private void down() {
+		snake.dir(0,20);
+		boolean[] temp = {false,true,false,false};
+		direc = temp;
+
+	}
+	private void right() {
+		snake.dir(20,0);
+		boolean[] temp = {false,false,true,false};
+		direc = temp;
+
+	}
+	private void left() {
+		snake.dir(-20,0);
+		boolean[] temp = {false,false,false,true};
+		direc = temp;
+}
+*/
 }
