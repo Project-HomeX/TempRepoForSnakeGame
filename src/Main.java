@@ -35,18 +35,16 @@ public class Main extends PApplet {
 		
 		
 		food.show();
+		
 		snake.update();
 		snake.show();
-		snake.death();
 		//this is a built in collision ditection in Processing. So don't worry about it.
-		
 		}
-	
 	public boolean collision(){
 		float r = dist(food.getX(),food.getY(),snake.getX(),snake.getY());
-		if(r<5){
+		if(r<1){
 			food.update();
-			snake.setTotal();
+			snake.total++;
 			return true;
 		}
 		return false;

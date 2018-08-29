@@ -13,7 +13,8 @@ public class Snake {
 
 	float xspeed = 10;
 	float yspeed = 0;
-	float total = 0;
+	static float total = 0;
+	
 	ArrayList<PVector> tail = new ArrayList<PVector>();
 	PApplet parrent;
 
@@ -25,29 +26,12 @@ public class Snake {
 		this.yspeed = 0;
 		parrent = p;
 	}
-	void setTotal(){
-		total++;
-	}
-	void clearTotal(){
-		total=0;
-	}
-	void death() {
-		for (int i = 0; i < tail.size(); i++) {
-			PVector pos = tail.get(i);
-			float d = PApplet.dist(this.x, this.y, pos.x, pos.x);
-			if (d < 1) {
-				System.out.println(this.x+" "+this.y+" "+ pos.x+" "+ pos.x);
-				total = 0;
-				tail.clear();
-			}
-		}
-	}
 	/**
 	 * update the snakes location.
 	 */
 	public void update() {
 		if (total > 0) {
-			if (total == tail.size()) {
+			if (total == tail.size() && !tail.isEmpty()) {
 				tail.remove(0);
 			} 
 				tail.add(new PVector(x, y));
@@ -68,7 +52,7 @@ public class Snake {
 		else if (y <= -10) {
 			y = 600;
 		}
-
+		
 		this.x = x + xspeed;
 		this.y = y + yspeed;
 	}
