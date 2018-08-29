@@ -16,7 +16,7 @@ public class Food {
 		return y;
 	}
 	public void show(){
-		p.fill(255);
+		p.fill(255,0,0);
 		p.rect(x, y, 20, 20);
 	}
 	public void update(){
