@@ -56,7 +56,9 @@ public class Snake {
 		this.x = x + xspeed;
 		this.y = y + yspeed;
 	}
-
+	public ArrayList<PVector> getTail(){
+		return this.tail;
+	}
 	public float getX() {
 		return x;
 	}

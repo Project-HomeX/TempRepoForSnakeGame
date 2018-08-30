@@ -35,7 +35,7 @@ public class Main extends PApplet {
 		
 		
 		food.show();
-		
+		death();
 		snake.update();
 		snake.show();
 		//this is a built in collision ditection in Processing. So don't worry about it.
@@ -48,6 +48,20 @@ public class Main extends PApplet {
 			return true;
 		}
 		return false;
+	}
+	public void death(){
+		ArrayList<PVector> t = snake.getTail();
+		if(snake.total>0){
+			if(snake.getTail().size()>0){
+				for (int i = 0; i < t.size(); i++) {
+					float d = dist(snake.x, snake.y, snake.tail.get(i).x,snake.tail.get(i).y);
+					if(d<1){
+						snake.getTail().clear();
+						snake.total = 0;
+					}
+				}
+			}
+		}
 	}
 	/**
 	 * flagU,flagR... stuff is to prevent opposite direction movement. 
